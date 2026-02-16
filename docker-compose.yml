@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:15
+    container_name: boxing-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: boxing_secret_pass
+      POSTGRES_DB: boxing_warehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d/ 
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: boxing-admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@boxing.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
