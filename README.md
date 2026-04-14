@@ -32,12 +32,14 @@ Make sure you have [Docker](https://www.docker.com/) and Docker Compose installe
 
 3. Build and start the container in detached mode:
     ```bash
-    docker-compose up --build -d
+    docker-compose up -d
     ```
 
 4. Access the data at: 
-- PostgreSQL Database: localhost:5432 (User: placeholder_user, DB: boxing_warehouse)
-- pgAdmin Web Interface: http://localhost:8080 (Login: placeholder@mail.com, Password: placeholder_pass)
+* **PostgreSQL Database:** `localhost:5432` (Use the `DB_USER`, `DB_PASS`, and `DB_NAME` you set in your `.env` file)
+* **pgAdmin Web Interface:** `http://localhost:8080` (Use the `PGADMIN_MAIL` and `PGADMIN_PASS` from your `.env` file)
 
 To stop the application, run:
+    ```bash
     docker-compose down
+    ```
